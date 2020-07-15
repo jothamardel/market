@@ -1,0 +1,9 @@
+const ConstantActionTypes = {
+  LOGIN_USER_START: 'LOGIN_USER_START',
+  LOGIN_USER_SUCCESS: 'LOGIN_USER_SUCCESS',
+  LOGIN_USER_FAILED: 'LOGIN_USER_FAILED',
+  LOAD_USER: 'LOAD_USER',
+  LOGOUT_USER: 'LOGOUT_USER'
+}
+
+export default ConstantActionTypes;

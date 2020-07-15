@@ -1,0 +1,91 @@
+
+@media only screen and (min-width: 365px) {
+
+  
+}
+
+@media only screen and (max-width: 360px) {
+  .dashboard h4 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: #079992;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .dashboard_menu {
+    margin-top: 10px;
+    margin-left: 10px;
+    box-shadow: 0 10px 20px #0003;
+    width: 22vw;
+    border: 0.8px solid #079992;
+  }
+  .dashboard_stat {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .dashboard_stat p {
+    font-size: 1.5rem;
+  }
+
+  .dashboard_menu span {
+    color: #079992;
+  }
+
+  .dashboard_search {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .dashboard_business {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    top: 240px;
+    background: #FFFF;
+    overflow-y: scroll;
+  }
+
+  .dashboard_business h6 {
+    margin-top: 100px;
+    font-weight: 100;
+    color: #079992;
+  }
+
+  .drawer-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+  }
+  .drawer-items h3 {
+    font-weight: 100;
+    font-size: 1rem;
+    color: #079992;
+    margin: 0;
+  }
+  .drawer-items a {
+    text-decoration: none;
+  }
+  .drawer-items_menu {
+    display: flex;
+    margin-bottom: 40px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  
+}
+
+@media only screen and (min-width: 411px) {
+
+  
+}

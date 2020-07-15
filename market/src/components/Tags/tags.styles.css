@@ -1,0 +1,21 @@
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  width: 80vw;
+  margin-left: 5px;
+  border: 0.8px solid grey;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.tag-container span {
+  text-align: center;
+  border-radius: 5px;
+  background-color: grey;
+  color: white;
+  padding: 2px;
+  margin: 5px 5px;
+  cursor: pointer;
+}

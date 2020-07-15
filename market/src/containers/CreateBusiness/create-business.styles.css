@@ -1,0 +1,109 @@
+
+@media only screen and (min-width: 365px) {
+
+  .create-business_container {
+    width: 18rem;
+    position: absolute;
+    top: 5rem;
+    left: 2rem;
+  }
+  
+  .create-business_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .create-business_form div {
+    margin-bottom: 5px;
+  }
+  
+  span {
+    font-size: 1rem;
+    font-weight: 100;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+
+  .create-business_container {
+    width: 18rem;
+    position: absolute;
+    top: 5rem;
+    left: 2rem;
+  }
+
+  .create-business_link a {
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+  }
+
+  .create-business_link p {
+    color: #079990;
+    margin-top: 8px;
+  }
+  
+  .create-business_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .create-business_form div {
+    margin-bottom: 5px;
+  }
+  
+  span {
+    font-size: 1rem;
+    font-weight: 100;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .create-business_container {
+    width: 18rem;
+    position: absolute;
+    top: 2rem;
+    left: 1rem;
+  }
+  
+  .create-business_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .create-business_form div {
+    margin-bottom: 5px;
+  }
+  
+  span {
+    font-size: 1rem;
+    font-weight: 100;
+  }
+}
+
+@media only screen and (min-width: 411px) {
+
+  .create-business_container {
+    width: 18rem;
+    position: absolute;
+    top: 5rem;
+    left: 3.6rem;
+  }
+  
+  .create-business_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .create-business_form div {
+    margin-bottom: 5px;
+  }
+
+  span {
+    font-size: 1rem;
+    font-weight: 100;
+  }
+}
