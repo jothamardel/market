@@ -33,7 +33,7 @@ class CreateBusiness extends React.Component {
   }
 
   componentDidMount() {
-
+    
   }
 
   onInputChange = (event) => {
@@ -51,19 +51,19 @@ class CreateBusiness extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { registerBusinessAsync } = this.props;
+    const { registerBusinessAsync, coord: {lat, lng} } = this.props;
     const {
       businessname, phoneno, rcNumber,
       businessowner, email, address,
-      city, state, tag, category,
-      lat, lng, registered
+      city, state, tag, category, registered
     } = this.state;
-    registerBusinessAsync(
-      businessowner, businessname, phoneno,
-      email, category,   
-      lat, lng, registered, rcNumber,
-      city, state, address, tag,
-    );
+    // registerBusinessAsync(
+    //   businessowner, businessname, phoneno,
+    //   email, category,   
+    //   lat, lng, registered, rcNumber,
+    //   city, state, address, tag,
+    // );
+    console.log(this.state)
   }
 
   render() {
@@ -189,7 +189,7 @@ class CreateBusiness extends React.Component {
             className='custom-button' 
             type='submit' 
             outlined
-            loading={this.state.loading}
+            // loading={this.state.loading ? 1 : 0}
             >Submit Details</Button>
         </form>
       </div>
@@ -197,9 +197,9 @@ class CreateBusiness extends React.Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-
-// })
+const mapStateToProps = (state) => ({
+  coord: state.coord
+})
 
 const mapDispatchToProps = (dispatch) => ({
   registerBusinessAsync: (
@@ -215,4 +215,4 @@ const mapDispatchToProps = (dispatch) => ({
   ))
 });
 
-export default connect(null, mapDispatchToProps)(CreateBusiness);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateBusiness);

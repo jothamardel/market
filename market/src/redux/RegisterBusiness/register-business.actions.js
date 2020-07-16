@@ -7,7 +7,12 @@ export const registerBusinessAsync = (
   city, state, address, tag
 ) => (dispatch) => {
   dispatch({ type: ConstantActionTypes.REGISTER_BUSINESS_START });
-  
+  console.log(
+    businessowner, businessname,
+    phoneno, email, category,
+    latitude, longitude, registered, rcNumber,
+    city, state, address, tag
+  )
   fetch(`${process.env.REACT_APP_API}/business`, {
       method: "post",
       headers: { 'Content-Type': 'application/json' },
@@ -18,11 +23,19 @@ export const registerBusinessAsync = (
       })
     })
     .then(response => {
-      dispatch({
-        type: ConstantActionTypes.REGISTER_BUSINESS_SUCCESS,
-        payload: response.status
-      })
-      return response.json()
+      if (response.status === 200) {
+        dispatch({
+          type: ConstantActionTypes.REGISTER_BUSINESS_SUCCESS,
+          payload: response.status
+        });
+        return response.json();
+      } else {
+        dispatch({
+          type: ConstantActionTypes.REGISTER_BUSINESS_FAILED,
+          payload: response.status
+        });
+        return;
+      }
     })
     .then(data => console.log(data))
     .catch(error => {

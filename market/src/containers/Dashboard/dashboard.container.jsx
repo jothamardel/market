@@ -5,6 +5,7 @@ import { Drawer, Button, Icon, Input, Badge } from "flwww";
 import { connect } from "react-redux";
 import { logoutUser } from '../../redux/User/user.actions';
 import { getBusinesses } from '../../redux/Business/business.actions';
+import { getCoordinates } from '../../redux/Coordinates/coordinates.actions';
 import './dashboard.styles.css';
 
 class Dashboard extends Component {
@@ -13,8 +14,15 @@ class Dashboard extends Component {
   }
 
   componentDidMount(){
-    const { getBusinesses } = this.props;
+    const { getBusinesses, getCoordinates } = this.props;
     getBusinesses();
+    if ('geolocation' in navigator) {
+      window.navigator.geolocation.getCurrentPosition((success) => {
+        const lat = success.coords.latitude;
+        const lng = success.coords.longitude;
+        getCoordinates( lat, lng);
+      });
+    }
   }
 
   toggleDrawer = () => {
@@ -23,6 +31,7 @@ class Dashboard extends Component {
 
   render(){
     const { logoutUser, business: { business } } = this.props;
+    console.log('Business array', business)
     return (
       <div className='dashboard'>
         <div className='dashboard_menu' onClick={ this.toggleDrawer }>
@@ -108,7 +117,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   logoutUser: () => dispatch(logoutUser()),
-  getBusinesses: () => dispatch(getBusinesses())
+  getBusinesses: () => dispatch(getBusinesses()),
+  getCoordinates: (lat, lng) => dispatch(getCoordinates(lat,lng))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
