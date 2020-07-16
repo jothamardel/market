@@ -31,6 +31,10 @@ class Dashboard extends Component {
 
   render(){
     const { logoutUser, business: { business } } = this.props;
+    let filteredBusiness = [];
+    if (business.length) {
+      filteredBusiness = business;
+    }
     console.log('Business array', business)
     return (
       <div className='dashboard'>
@@ -62,8 +66,8 @@ class Dashboard extends Component {
         </div>
         <div className='dashboard_business'>
           {
-            business.length > 0 ? 
-            business.map((item, index) => (
+            filteredBusiness.length > 0 ? 
+            filteredBusiness.map((item, index) => (
                 <BusinessDetails 
                   key={item.id}
                   name = {item.name}

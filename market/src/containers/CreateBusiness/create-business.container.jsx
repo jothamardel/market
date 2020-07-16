@@ -57,12 +57,12 @@ class CreateBusiness extends React.Component {
       businessowner, email, address,
       city, state, tag, category, registered
     } = this.state;
-    // registerBusinessAsync(
-    //   businessowner, businessname, phoneno,
-    //   email, category,   
-    //   lat, lng, registered, rcNumber,
-    //   city, state, address, tag,
-    // );
+    registerBusinessAsync(
+      businessowner, businessname, phoneno,
+      email, category,   
+      lat, lng, registered, rcNumber,
+      city, state, address, tag,
+    );
     console.log(this.state)
   }
 
