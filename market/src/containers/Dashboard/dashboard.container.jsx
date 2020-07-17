@@ -19,6 +19,9 @@ class Dashboard extends Component {
   }
 
   componentDidMount(){
+    // this.runSearch();
+    // window.location.reload();
+    
     const { getBusinesses, getCoordinates } = this.props;
     getBusinesses();
     if ('geolocation' in navigator) {
@@ -27,6 +30,11 @@ class Dashboard extends Component {
         const lng = success.coords.longitude;
         getCoordinates( lat, lng);
       });
+      if (this.props.business.business) {
+        const { business: { business } } = this.props;
+        console.log('Loaded to state')
+        this.setState({ filteredBusiness: business });
+      }
     }
 
     if (this.props.business.business) {
@@ -58,7 +66,6 @@ class Dashboard extends Component {
 
   render(){
     const { logoutUser } = this.props;
-    
     return (
       <div className='dashboard'>
         <div className='dashboard_menu' onClick={ this.toggleDrawer }>
@@ -88,7 +95,11 @@ class Dashboard extends Component {
             style={{  height: "30px" }}
             type='submit'
             onClick={ this.runSearch }
-            >search</Button>
+            >
+             {
+               this.state.filteredBusiness.length === 0 ? 'Refresh' : 'Search'
+             }
+            </Button>
         </div>
         <div className='dashboard_business'>
           {

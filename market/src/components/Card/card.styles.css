@@ -1,6 +1,14 @@
 
 @media only screen and (min-width: 365px) {
+  .business-details {
+    margin: 10px 10px;
+  }
 
+  .business-details_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
 }
 
@@ -22,5 +30,13 @@
 
 @media only screen and (min-width: 411px) {
 
-  
+  .business-details {
+    margin: 10px 10px;
+  }
+
+  .business-details_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
