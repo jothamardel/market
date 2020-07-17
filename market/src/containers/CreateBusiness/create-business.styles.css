@@ -7,6 +7,11 @@
     top: 5rem;
     left: 2rem;
   }
+
+  .create-business_container_message {
+    color: yellow;
+    text-align: center;
+  }
   
   .create-business_form {
     display: flex;
@@ -31,6 +36,17 @@
     position: absolute;
     top: 5rem;
     left: 2rem;
+  }
+
+  
+
+  .create-business_container_message {
+    color: #0a6e31;
+    text-align: center;
+  }
+
+  .error_red {
+    color: red
   }
 
   .create-business_link a {

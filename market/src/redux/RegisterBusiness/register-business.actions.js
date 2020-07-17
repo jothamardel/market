@@ -10,7 +10,7 @@ export const registerBusinessAsync = (
   console.log(
     businessowner, businessname,
     phoneno, email, category,
-    latitude, longitude, registered, rcNumber,
+    'Lat: ', latitude, 'Lng: ', longitude, registered, rcNumber,
     city, state, address, tag
   )
   fetch(`${process.env.REACT_APP_API}/business`, {
@@ -34,10 +34,22 @@ export const registerBusinessAsync = (
           type: ConstantActionTypes.REGISTER_BUSINESS_FAILED,
           payload: response.status
         });
-        return;
+        return response.json();
       }
     })
-    .then(data => console.log(data))
+    .then(data => {
+      if (!data || data === "Unable to resgister business.") {
+        dispatch({
+          type: ConstantActionTypes.REGISTER_BUSINESS_FAILED,
+          payload: data
+        });
+        return;
+      };
+      dispatch({
+        type: ConstantActionTypes.REGISTER_BUSINESS_SUCCESS,
+        payload: data
+      })
+    })
     .catch(error => {
       dispatch({
         type: ConstantActionTypes.REGISTER_BUSINESS_FAILED,

@@ -9,8 +9,13 @@ import { getCoordinates } from '../../redux/Coordinates/coordinates.actions';
 import './dashboard.styles.css';
 
 class Dashboard extends Component {
-  state = {
-    drawerIsVisible: false
+  constructor(){
+    super();
+    this.state = {
+      drawerIsVisible: false,
+      searchBox: '',
+      filteredBusiness: []
+    }
   }
 
   componentDidMount(){
@@ -23,21 +28,37 @@ class Dashboard extends Component {
         getCoordinates( lat, lng);
       });
     }
+
+    if (this.props.business.business) {
+      const { business: { business } } = this.props;
+      this.setState({ filteredBusiness: business });
+    }
   }
 
   toggleDrawer = () => {
     this.setState(prevState => ({ drawerIsVisible: !prevState.drawerIsVisible }))
   }
 
+  onSearchChange = (event) => {
+    event.preventDefault();
+    console.log(event.target.value)
+    console.log()
+    this.setState({ searchBox: event.target.value });
+  }
+  runSearch = () => {
+    let biz = [];
+    if (this.props.business.business) {
+      const { business: { business } } =  this.props;
+      biz = business.filter((item) => (
+        item.name.toLowerCase().includes(this.state.searchBox.toLowerCase())
+      ))
+      this.setState({ filteredBusiness: biz })
+    }
+  }
+
   render(){
     const { logoutUser } = this.props;
-    let filteredBusiness = [];
-    if (!this.props.business.business) {
-      filteredBusiness = [];
-    }
-    if (this.props.business.business) {
-      filteredBusiness = this.props.business.business;
-    }
+    
     return (
       <div className='dashboard'>
         <div className='dashboard_menu' onClick={ this.toggleDrawer }>
@@ -61,15 +82,18 @@ class Dashboard extends Component {
             style={{ fontSize: "1rem", marginBottom: ".7rem" }}
             icon="search"
             name='name'
-            placeholder="search for business" />
+            onChange={ this.onSearchChange }
+            placeholder="search for business"/>
             <Button outlined 
             style={{  height: "30px" }}
+            type='submit'
+            onClick={ this.runSearch }
             >search</Button>
         </div>
         <div className='dashboard_business'>
           {
-            filteredBusiness.length > 0 ? 
-            filteredBusiness.map((item, index) => (
+            this.state.filteredBusiness.length > 0 ? 
+            this.state.filteredBusiness.map((item, index) => (
                 <BusinessDetails 
                   key={item.id}
                   name = {item.name}

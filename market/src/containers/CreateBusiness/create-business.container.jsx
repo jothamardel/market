@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Input, message, Icon } from 'flwww';
+import { Button, Input, Icon } from 'flwww';
 import { registerBusinessAsync } from '../../redux/RegisterBusiness/register-business.actions';
 import CustomInput from '../../components/CustomInput/custom-input.component';
 
@@ -21,7 +21,7 @@ class CreateBusiness extends React.Component {
       address: '',
       city: '',
       state: '',
-      tag: [],
+      tag: '',
       category: '',
       lat: '',
       lng: '',
@@ -51,7 +51,7 @@ class CreateBusiness extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { registerBusinessAsync, coord: {lat, lng} } = this.props;
+    const { registerBusinessAsync, coord: { location: {lat, lng} } } = this.props;
     const {
       businessname, phoneno, rcNumber,
       businessowner, email, address,
@@ -63,16 +63,22 @@ class CreateBusiness extends React.Component {
       lat, lng, registered, rcNumber,
       city, state, address, tag,
     );
-    console.log(this.state)
+
+    
   }
 
   render() {
-    const { register: { isSending } } = this.props;
+    const { register: { isSending, status } } = this.props;
     const filteredTags = TagsItems.filter(item => {
       return item.toLowerCase().includes(this.state.tagItems.toLowerCase())
     });
     return (
       <div className='create-business_container'>
+        {
+          !status ? null : <p className={`${
+            status === 'Unable to resgister business.' ? 'error_red' : ''
+          } create-business_container_message`}>{ status }</p>
+        }
         <div className='create-business_link'>
           <Link to='/dashboard'>
             <Icon type="arrowLeftCircle" size="30px" color="#079992"/>
@@ -85,6 +91,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='text' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='Business Name *' 
             name='businessname' 
@@ -94,6 +101,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='number' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='Phone Number *' 
             name='phoneno' 
@@ -103,6 +111,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='text' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='RC Number *' 
             name='rcNumber' 
@@ -112,6 +121,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='text' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='Address *' 
             name='address' 
@@ -121,6 +131,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='text' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='City *' 
             name='city' 
@@ -130,6 +141,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='text' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='State *' 
             name='state' 
@@ -139,6 +151,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='text' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='category *' 
             name='category' 
@@ -148,9 +161,10 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='text' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='tag *' 
-            name='tagItems' 
+            name='tag' 
             onChange={this.onInputChange}
             onClick={this.openTag}/>
             {
@@ -160,6 +174,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' required 
             type='text' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='Business Owner *' 
             name='businessowner' 
@@ -169,6 +184,7 @@ class CreateBusiness extends React.Component {
           <Input 
             className='custom-input' 
             type='email' 
+            // onFocus="this.value=''"
             autoComplete='off'
             placeholder='Email (optional)' 
             name='email' 
