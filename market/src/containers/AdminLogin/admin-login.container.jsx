@@ -45,6 +45,7 @@ class AdminLogin extends React.Component {
 
   render() {
     console.log('admin-login...')
+    const { user: { isPending } } = this.props;
     return (
       <div className='admin-login'>
         <div>
@@ -69,17 +70,23 @@ class AdminLogin extends React.Component {
           type='password'
           placeholder="password" 
           onChange={this.handleChange}/>
-        
-        <Button outlined 
-          // loading={ this.state.loading ? 0 : 1 } 
-          onClick={this.handleSubmit}>Login </Button>
+        {
+          isPending ?
+          <Button outlined loading={"true"}>Login</Button>
+          :
+          <Button outlined onClick={this.handleSubmit}>Login</Button>
+        }
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
 const mapDispatchToProps = (dispatch) => ({
   loginUserAsync: (name, password) => dispatch(loginUserAsync(name, password))
 });
 
-export default connect(null, mapDispatchToProps)(AdminLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminLogin);

@@ -32,7 +32,10 @@ class Dashboard extends Component {
   render(){
     const { logoutUser } = this.props;
     let filteredBusiness = [];
-    if (this.props.business.business.length > 0) {
+    if (!this.props.business.business) {
+      filteredBusiness = [];
+    }
+    if (this.props.business.business) {
       filteredBusiness = this.props.business.business;
     }
     return (

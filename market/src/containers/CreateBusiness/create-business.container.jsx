@@ -67,6 +67,7 @@ class CreateBusiness extends React.Component {
   }
 
   render() {
+    const { register: { isSending } } = this.props;
     const filteredTags = TagsItems.filter(item => {
       return item.toLowerCase().includes(this.state.tagItems.toLowerCase())
     });
@@ -185,12 +186,21 @@ class CreateBusiness extends React.Component {
                 Registered with CAC
               </span>
           </div>
-          <Button 
-            className='custom-button' 
-            type='submit' 
-            outlined
-            // loading={this.state.loading ? 1 : 0}
-            >Submit Details</Button>
+          {
+            isSending ?
+              <Button 
+                className='custom-button' 
+                type='submit' 
+                outlined
+                loading={"true"}
+                >Submit Details</Button>
+              :
+              <Button 
+                className='custom-button' 
+                type='submit' 
+                outlined
+                >Submit Details</Button>
+          }
         </form>
       </div>
     );
@@ -198,7 +208,8 @@ class CreateBusiness extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  coord: state.coord
+  coord: state.coord,
+  register: state.register
 })
 
 const mapDispatchToProps = (dispatch) => ({
