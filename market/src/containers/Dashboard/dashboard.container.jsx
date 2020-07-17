@@ -30,12 +30,11 @@ class Dashboard extends Component {
   }
 
   render(){
-    const { logoutUser, business: { business } } = this.props;
+    const { logoutUser } = this.props;
     let filteredBusiness = [];
-    if (business.length) {
-      filteredBusiness = business;
+    if (this.props.business.business.length > 0) {
+      filteredBusiness = this.props.business.business;
     }
-    console.log('Business array', business)
     return (
       <div className='dashboard'>
         <div className='dashboard_menu' onClick={ this.toggleDrawer }>
