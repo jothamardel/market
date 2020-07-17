@@ -28,11 +28,17 @@ export const loginUserAsync = (name, password) => (dispatch) => {
         type: ConstantActionTypes.LOGIN_USER_FAILED,
         payload: response.status
       });
-      return;
+      return response.json();
     }
   })
   .then((data) => {
-    if (!data) return;
+    if (!data || data === 'Incorrect Credentials!') {
+      dispatch({
+        type: ConstantActionTypes.LOGIN_USER_FAILED,
+        payload: data
+      })
+      return;
+    } 
     dispatch({
       type: ConstantActionTypes.LOAD_USER,
       payload: data

@@ -71,7 +71,7 @@ class CreateBusiness extends React.Component {
     const { register: { isSending, status } } = this.props;
     const filteredTags = TagsItems.filter(item => {
       return item.toLowerCase().includes(this.state.tagItems.toLowerCase())
-    });
+    }); 
     return (
       <div className='create-business_container'>
         {

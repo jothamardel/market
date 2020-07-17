@@ -4,13 +4,30 @@
   .create-business_container {
     width: 18rem;
     position: absolute;
-    top: 5rem;
+    top: 0.5rem;
     left: 2rem;
   }
 
+  
+
   .create-business_container_message {
-    color: yellow;
+    color: #0a6e31;
     text-align: center;
+  }
+
+  .error_red {
+    color: red
+  }
+
+  .create-business_link a {
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+  }
+
+  .create-business_link p {
+    color: #079990;
+    margin-top: 8px;
   }
   
   .create-business_form {
@@ -18,7 +35,6 @@
     flex-direction: column;
     justify-content: center;
   }
-
   .create-business_form div {
     margin-bottom: 5px;
   }
@@ -34,7 +50,7 @@
   .create-business_container {
     width: 18rem;
     position: absolute;
-    top: 5rem;
+    top: 0.5rem;
     left: 2rem;
   }
 
@@ -79,16 +95,38 @@
   .create-business_container {
     width: 18rem;
     position: absolute;
-    top: 2rem;
-    left: 1rem;
+    top: 0.5rem;
+    left: 2rem;
+  }
+
+  
+
+  .create-business_container_message {
+    color: #0a6e31;
+    text-align: center;
+  }
+
+  .error_red {
+    color: red
+  }
+
+  .create-business_link a {
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+  }
+
+  .create-business_link p {
+    color: #079990;
+    margin-top: 8px;
   }
   
   .create-business_form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 80vw;
   }
-
   .create-business_form div {
     margin-bottom: 5px;
   }
@@ -104,8 +142,30 @@
   .create-business_container {
     width: 18rem;
     position: absolute;
-    top: 5rem;
-    left: 3.6rem;
+    top: 0.5rem;
+    left: 2rem;
+  }
+
+  
+
+  .create-business_container_message {
+    color: #0a6e31;
+    text-align: center;
+  }
+
+  .error_red {
+    color: red
+  }
+
+  .create-business_link a {
+    display: flex;
+    flex-wrap: nowrap;
+    text-decoration: none;
+  }
+
+  .create-business_link p {
+    color: #079990;
+    margin-top: 8px;
   }
   
   .create-business_form {
@@ -113,11 +173,10 @@
     flex-direction: column;
     justify-content: center;
   }
-  
   .create-business_form div {
     margin-bottom: 5px;
   }
-
+  
   span {
     font-size: 1rem;
     font-weight: 100;

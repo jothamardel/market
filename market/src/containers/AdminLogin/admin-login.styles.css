@@ -9,6 +9,11 @@
     width: 80vw; 
   }
 
+  .admin-login_error_red {
+    color: red;
+  }
+
+
   .admin-login_link {
     display: flex;
     flex-wrap: nowrap;
@@ -37,6 +42,11 @@
     width: 80vw; 
   }
 
+  .admin-login_error_red {
+    color: red;
+  }
+
+
   .admin-login_link {
     display: flex;
     flex-wrap: nowrap;
@@ -64,6 +74,11 @@
     width: 80vw; 
   }
 
+  .admin-login_error_red {
+    color: red;
+  }
+
+
   .admin-login_link {
     display: flex;
     flex-wrap: nowrap;
@@ -89,6 +104,10 @@
     display: flex;
     flex-direction: column;
     width: 80vw; 
+  }
+
+  .admin-login_error_red {
+    color: red;
   }
 
   .admin-login_link {

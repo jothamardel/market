@@ -44,8 +44,7 @@ class AdminLogin extends React.Component {
   }
 
   render() {
-    console.log('admin-login...')
-    const { user: { isPending } } = this.props;
+    const { user: { isPending, errorStatus } } = this.props;
     return (
       <div className='admin-login'>
         <div>
@@ -54,6 +53,11 @@ class AdminLogin extends React.Component {
             <p>Back</p>
           </Link>
         </div>
+        {
+          !errorStatus ? null : 
+          <p className={ !errorStatus ? '' : 'admin-login_error_red'}
+          >{ errorStatus }</p>
+        }
         <Input
           style={{ fontSize: "1rem", marginBottom: ".7rem" }}
           icon="user"
