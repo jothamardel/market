@@ -32,7 +32,7 @@ export const loginUserAsync = (name, password) => (dispatch) => {
     }
   })
   .then((data) => {
-    if (!data || data === 'Incorrect Credentials!') {
+    if (!data || data === 'Incorrect Credentials!' || data === 'login credentials incorrect!') {
       dispatch({
         type: ConstantActionTypes.LOGIN_USER_FAILED,
         payload: data

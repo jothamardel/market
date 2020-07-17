@@ -52,11 +52,11 @@ class AdminLogin extends React.Component {
             <Icon type="arrowLeftCircle" size="30px" color="#079992"/>
             <p>Back</p>
           </Link>
-        </div>
+        </div> 
         {
           !errorStatus ? null : 
-          <p className={ !errorStatus ? '' : 'admin-login_error_red'}
-          >{ errorStatus }</p>
+          <h5 className="admin-login_error_red"
+          >{ errorStatus }</h5>
         }
         <Input
           style={{ fontSize: "1rem", marginBottom: ".7rem" }}

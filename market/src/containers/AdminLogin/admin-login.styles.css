@@ -13,6 +13,10 @@
     color: red;
   }
 
+  .admin-login p {
+    color: red;
+  }
+
 
   .admin-login_link {
     display: flex;
@@ -42,7 +46,8 @@
     width: 80vw; 
   }
 
-  .admin-login_error_red {
+
+  .admin-login h5 {
     color: red;
   }
 
