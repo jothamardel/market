@@ -5,18 +5,20 @@ import registerReducer from './RegisterBusiness/register-business.reducer';
 import userReducer from './User/user.reducer';
 import businessReducer from './Business/business.reducer';
 import coordReducer from './Coordinates/coordinates.reducer';
+import modalReducer from './Modal/modal.reducer';
 
 const persistConfig = {
   key: 'root',
   storage: persistStore,
-  whitelist: ['user', 'register', 'business', 'coord']
+  whitelist: ['user', 'register', 'business', 'coord', 'modal']
 };
 
 const rootReducer = combineReducers({
   user: userReducer,
   register: registerReducer,
   business: businessReducer,
-  coord: coordReducer
+  coord: coordReducer,
+  modal: modalReducer
 });
 
 export default persistReducer(persistConfig, rootReducer);

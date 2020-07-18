@@ -7,12 +7,6 @@ export const registerBusinessAsync = (
   city, state, address, tag
 ) => (dispatch) => {
   dispatch({ type: ConstantActionTypes.REGISTER_BUSINESS_START });
-  console.log(
-    businessowner, businessname,
-    phoneno, email, category,
-    'Lat: ', latitude, 'Lng: ', longitude, registered, rcNumber,
-    city, state, address, tag
-  )
   fetch(`${process.env.REACT_APP_API}/business`, {
       method: "post",
       headers: { 'Content-Type': 'application/json' },

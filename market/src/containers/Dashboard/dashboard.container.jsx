@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import { logoutUser } from '../../redux/User/user.actions';
 import { getBusinesses, getAllBusinessAddress, getAllBusinessOwner, getAllBusinessCoord, getAllBusinessTag } from '../../redux/Business/business.actions';
 import { getCoordinates } from '../../redux/Coordinates/coordinates.actions';
+import { showModal } from "../../redux/Modal/modal.actions";
+import ShowModal from '../Modal/modal.container';
 import './dashboard.styles.css';
 
 class Dashboard extends Component {
@@ -19,7 +21,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount(){
-    
+
     const {
       getBusinesses, getCoordinates,
       getAllBusinessAddress, getAllBusinessOwner,
@@ -56,8 +58,6 @@ class Dashboard extends Component {
 
   onSearchChange = (event) => {
     event.preventDefault();
-    console.log(event.target.value)
-    console.log()
     this.setState({ searchBox: event.target.value });
   }
   runSearch = () => {
@@ -108,21 +108,29 @@ class Dashboard extends Component {
              }
             </Button>
         </div>
-        <div className='dashboard_business'>
           {
-            this.state.filteredBusiness.length > 0 ? 
+            (this.state.filteredBusiness.length > 0) ? 
             this.state.filteredBusiness.map((item, index) => (
+              <div className='dashboard_business' onClick={() => this.props.showModal(index)} key={item.id}>
                 <BusinessDetails 
                   key={item.id}
                   name = {item.name}
                   phoneno = {item.phoneno}
                   rcNumber = {item.rc_number}
-                 registered = {item.registered}
-                />
-            )) : <h6>No Result</h6>
+                  registered = {item.registered}
+                /> 
+              </div>
+            )) : <h6 className='dashboard_business_no-result'>No Result</h6>
           }
         
-        </div>
+        
+
+        {
+          this.props.modal.showModal ?
+          <ShowModal /> : null
+        }
+
+
         <Drawer
           showDrawer={ this.state.drawerIsVisible }
           toggleDrawer={ this.toggleDrawer }
@@ -160,7 +168,8 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  business: state.business
+  business: state.business,
+  modal: state.modal
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -170,7 +179,8 @@ const mapDispatchToProps = (dispatch) => ({
   getAllBusinessOwner: () => dispatch(getAllBusinessOwner()),
   getAllBusinessCoord: () => dispatch(getAllBusinessCoord()),
   getAllBusinessTag: () => dispatch(getAllBusinessTag()),
-  getCoordinates: (lat, lng) => dispatch(getCoordinates(lat,lng))
+  getCoordinates: (lat, lng) => dispatch(getCoordinates(lat,lng)),
+  showModal: (index) => dispatch(showModal(index))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

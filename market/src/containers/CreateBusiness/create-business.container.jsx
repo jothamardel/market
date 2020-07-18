@@ -40,6 +40,16 @@ class CreateBusiness extends React.Component {
   onInputChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
+    if (name === 'registered' && value === 'on') {
+      console.log('registered', value)
+      this.setState({ registered: true })
+      return;
+    }
+    if (name === 'registered' && value !== 'on') {
+      console.log('registered', value)
+      this.setState({ registered: false })
+      return;
+    }
     this.setState({ [name]: value })
   }
 
@@ -53,25 +63,28 @@ class CreateBusiness extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     
-    const { registerBusinessAsync, coord: { location: {lat, lng}, getCoordinates } } = this.props;
+    
     if ('geolocation' in navigator) {
+      const { registerBusinessAsync, 
+        // coord: { location: {lat, lng}, getCoordinates } 
+      } = this.props;
       window.navigator.geolocation.getCurrentPosition((success) => {
         const lat = success.coords.latitude;
         const lng = success.coords.longitude;
-        getCoordinates( lat, lng);
+        // getCoordinates( lat, lng);
+        const {
+          businessname, phoneno, rcNumber,
+          businessowner, email, address,
+          city, state, tag, category, registered
+        } = this.state;
+        registerBusinessAsync(
+          businessowner, businessname, phoneno,
+          email, category,   
+          lat, lng, registered, rcNumber,
+          city, state, address, tag,
+        );
       });
     }
-    const {
-      businessname, phoneno, rcNumber,
-      businessowner, email, address,
-      city, state, tag, category, registered
-    } = this.state;
-    registerBusinessAsync(
-      businessowner, businessname, phoneno,
-      email, category,   
-      lat, lng, registered, rcNumber,
-      city, state, address, tag,
-    );
 
     
   }
