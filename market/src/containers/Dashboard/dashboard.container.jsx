@@ -4,7 +4,7 @@ import BusinessDetails from '../../components/Card/card.component';
 import { Drawer, Button, Icon, Input, Badge } from "flwww";
 import { connect } from "react-redux";
 import { logoutUser } from '../../redux/User/user.actions';
-import { getBusinesses, getAllBusinessAddress } from '../../redux/Business/business.actions';
+import { getBusinesses, getAllBusinessAddress, getAllBusinessOwner, getAllBusinessCoord, getAllBusinessTag } from '../../redux/Business/business.actions';
 import { getCoordinates } from '../../redux/Coordinates/coordinates.actions';
 import './dashboard.styles.css';
 
@@ -19,9 +19,19 @@ class Dashboard extends Component {
   }
 
   componentDidMount(){
-    const { getBusinesses, getCoordinates, getAllBusinessAddress } = this.props;
+    
+    const {
+      getBusinesses, getCoordinates,
+      getAllBusinessAddress, getAllBusinessOwner,
+      getAllBusinessCoord, getAllBusinessTag
+    } = this.props;
+
     getBusinesses();
     getAllBusinessAddress();
+    getAllBusinessOwner();
+    getAllBusinessCoord();
+    getAllBusinessTag();
+  
     if ('geolocation' in navigator) {
       window.navigator.geolocation.getCurrentPosition((success) => {
         const lat = success.coords.latitude;
@@ -157,6 +167,9 @@ const mapDispatchToProps = (dispatch) => ({
   logoutUser: () => dispatch(logoutUser()),
   getBusinesses: () => dispatch(getBusinesses()),
   getAllBusinessAddress: () => dispatch(getAllBusinessAddress()),
+  getAllBusinessOwner: () => dispatch(getAllBusinessOwner()),
+  getAllBusinessCoord: () => dispatch(getAllBusinessCoord()),
+  getAllBusinessTag: () => dispatch(getAllBusinessTag()),
   getCoordinates: (lat, lng) => dispatch(getCoordinates(lat,lng))
 });
 

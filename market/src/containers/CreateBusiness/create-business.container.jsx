@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Input, Icon } from 'flwww';
 import { registerBusinessAsync } from '../../redux/RegisterBusiness/register-business.actions';
+import { getCoordinates } from '../../redux/Coordinates/coordinates.actions';
 import CustomInput from '../../components/CustomInput/custom-input.component';
 
 import './create-business.styles.css';
@@ -51,7 +52,15 @@ class CreateBusiness extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { registerBusinessAsync, coord: { location: {lat, lng} } } = this.props;
+    
+    const { registerBusinessAsync, coord: { location: {lat, lng}, getCoordinates } } = this.props;
+    if ('geolocation' in navigator) {
+      window.navigator.geolocation.getCurrentPosition((success) => {
+        const lat = success.coords.latitude;
+        const lng = success.coords.longitude;
+        getCoordinates( lat, lng);
+      });
+    }
     const {
       businessname, phoneno, rcNumber,
       businessowner, email, address,
@@ -239,7 +248,8 @@ const mapDispatchToProps = (dispatch) => ({
     phoneno, email, category,
     latitude, longitude, registered, rcNumber,
     city, state, address, tag
-  ))
+  )),
+  getCoordinates: (lat, lng) => dispatch(getCoordinates(lat, lng))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateBusiness);
