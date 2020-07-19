@@ -111,7 +111,7 @@ class Dashboard extends Component {
           {
             (this.state.filteredBusiness.length > 0) ? 
             this.state.filteredBusiness.map((item, index) => (
-              <div className='dashboard_business' onClick={() => this.props.showModal(index)} key={item.id}>
+              <div className='dashboard_business' onClick={() => this.props.showModal(item.phoneno)} key={item.id}>
                 <BusinessDetails 
                   key={item.id}
                   name = {item.name}
