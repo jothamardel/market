@@ -123,6 +123,13 @@
   }
 }
 
+.dashboard_business_no-result {
+  margin-top: 100px;
+  font-weight: 100;
+  color: #079992;
+  text-align: center;
+}
+
 @media only screen and (max-width: 414px) {
   .dashboard_menu {
     margin-top: 10px;
