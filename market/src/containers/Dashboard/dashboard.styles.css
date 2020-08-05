@@ -56,6 +56,28 @@
   margin: 10px;
 }
 
+
+
+.drawer-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+.drawer-items h3 {
+  font-weight: 100;
+  font-size: 1rem;
+  color: #079992;
+  margin: 0;
+}
+.drawer-items a {
+  text-decoration: none;
+}
+.drawer-items_menu {
+  display: flex;
+  margin-bottom: 40px;
+}
+
 @media only screen and (max-width: 768px) {
   .dashboard_menu {
     margin-top: 10px;
@@ -66,6 +88,7 @@
     border: 0.8px solid #079992;
     cursor: pointer;
   }
+  
   
 }
 
