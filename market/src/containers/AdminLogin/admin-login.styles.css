@@ -9,6 +9,73 @@
   padding: 10px;
 }
 
+.admin-login_error_red {
+  color: red;
+}
+
+.admin-login p {
+  color: red;
+}
+
+
+.admin-login_link {
+  display: flex;
+  flex-wrap: nowrap;
+  text-decoration: none;
+}
+.admin-login div {
+  margin-bottom: 20px;
+}
+
+.admin-login p {
+  margin: 0;
+  color: #079990;
+  margin-top: 8px;
+}
+
+
+@media only screen and (max-width: 768px) and (min-width: 768px) {
+  .admin-login {
+    display: flex;
+    margin: 200px auto;
+    justify-content: center;
+  }
+  
+  .admin-login_container {
+    width: 50vw;
+    padding: 10px;
+  }
+}
+
+
+@media only screen and (max-width: 700px) {
+  .admin-login {
+    display: flex;
+    margin: 200px auto;
+    justify-content: center;
+  }
+  
+  .admin-login_container {
+    width: 50vw;
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .admin-login {
+    display: flex;
+    margin: 200px auto;
+    justify-content: center;
+  }
+  
+  .admin-login_container {
+    width: 60vw;
+    padding: 10px;
+  }
+}
+
+
+
 /* 
 
 @media only screen and (min-width: 365px) {

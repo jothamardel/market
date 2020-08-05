@@ -138,7 +138,6 @@ class Dashboard extends Component {
         <Drawer
           showDrawer={ this.state.drawerIsVisible }
           toggleDrawer={ this.toggleDrawer }
-          className='drawer-container'
           >
           <div className='drawer-items'>
             <Link to='/register'>
