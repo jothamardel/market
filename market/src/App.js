@@ -21,7 +21,6 @@ const theme = {
 };
 
 function App({ user }) {
-  // console.log(user);
   return (
     <ThemeProvider theme={ theme }>
       <Switch>

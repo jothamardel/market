@@ -94,6 +94,7 @@ class Dashboard extends Component {
         <div className='dashboard_search'>
           <Input
             style={{ fontSize: "1rem", marginBottom: ".7rem" }}
+            className='search'
             icon="search"
             name='name'
             onChange={ this.onSearchChange }
@@ -108,6 +109,8 @@ class Dashboard extends Component {
              }
             </Button>
         </div>
+        <div className='dashboard-business_container'>
+
           {
             (this.state.filteredBusiness.length > 0) ? 
             this.state.filteredBusiness.map((item, index) => (
@@ -123,6 +126,7 @@ class Dashboard extends Component {
             )) : <h6 className='dashboard_business_no-result'>No Result</h6>
           }
         
+        </div>
         
 
         {

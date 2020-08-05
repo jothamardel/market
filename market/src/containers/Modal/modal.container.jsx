@@ -15,7 +15,6 @@ class ShowModal extends Component {
     const filteredOwner = owner.find(item  => item.phoneno === index);
     const filteredCoord = coord.find(item  => item.phoneno === index);
     const filteredTag = tag.find(item  => item.phoneno === index);
-   console.log(filteredBusiness)
     return (
       <div>
 

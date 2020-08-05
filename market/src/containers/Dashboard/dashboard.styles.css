@@ -1,4 +1,155 @@
+.dashboard_menu {
+  margin-top: 10px;
+  margin-left: 10px;
+  box-shadow: 0 10px 20px #0003;
+  width: 4vw;
+  height: 4vh;
+  border: 0.8px solid #079992;
+  cursor: pointer;
+}
 
+.dashboard h4 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: #079992;
+}
+
+.dashboard_stat {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 30px;
+}
+
+.dashboard_stat p {
+  cursor: pointer;
+}
+
+.dashboard_menu span {
+  color: #079992;
+}
+
+.dashboard_search {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboard_search .search {
+  width: 40vw;
+  height: 5vh;
+}
+
+.dashboard-business_container {
+
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  width: 100vw;
+  top: 240px;
+  background: #FFFF;
+}
+
+.dashboard_business {
+  width: 300px;
+  border: 1px solid #079992;
+  margin: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard_menu {
+    margin-top: 10px;
+    margin-left: 10px;
+    box-shadow: 0 10px 20px #0003;
+    width: 10vw;
+    height: 3vh;
+    border: 0.8px solid #079992;
+    cursor: pointer;
+  }
+  
+}
+
+
+@media only screen and (max-width: 700px) {
+  .dashboard_menu {
+    margin-top: 10px;
+    margin-left: 10px;
+    box-shadow: 0 10px 20px #0003;
+    width: 12vw;
+    height: 5vh;
+    border: 0.8px solid #079992;
+    cursor: pointer;
+  }
+
+  .dashboard h4 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 100;
+    color: #079992;
+  }
+
+  .dashboard_stat {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+  }
+
+  .dashboard_search {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .dashboard_search .search {
+    width: 50vw;
+    height: 8vh;
+  }
+
+  .dashboard-business_container {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    width: 100vw;
+    top: 240px;
+    background: #FFFF;
+  }
+
+  .dashboard_business {
+    width: 250px;
+    border: 1px solid #079992;
+    margin: 10px;
+  }
+}
+
+@media only screen and (max-width: 414px) {
+  .dashboard_menu {
+    margin-top: 10px;
+    margin-left: 10px;
+    box-shadow: 0 10px 20px #0003;
+    width: 20vw;
+    height: 4vh;
+    border: 0.8px solid #079992;
+    cursor: pointer;
+  }
+  
+}
+
+@media only screen and (max-width: 340px) {
+  .dashboard_menu {
+    margin-top: 10px;
+    margin-left: 10px;
+    box-shadow: 0 10px 20px #0003;
+    width: 25vw;
+    height: 5vh;
+    border: 0.8px solid #079992;
+    cursor: pointer;
+  }
+  
+}
+
+/* 
 
 
 
@@ -301,4 +452,4 @@
   }
 
   
-}
+} */

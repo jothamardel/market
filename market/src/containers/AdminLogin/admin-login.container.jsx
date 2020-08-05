@@ -47,39 +47,41 @@ class AdminLogin extends React.Component {
     const { user: { isPending, errorStatus } } = this.props;
     return (
       <div className='admin-login'>
-        <div>
-          <Link to='/' className='admin-login_link'>
-            <Icon type="arrowLeftCircle" size="30px" color="#079992"/>
-            <p>Back</p>
-          </Link>
-        </div> 
-        {
-          !errorStatus ? null : 
-          <h5 className="admin-login_error_red"
-          >{ errorStatus }</h5>
-        }
-        <Input
-          style={{ fontSize: "1rem", marginBottom: ".7rem" }}
-          icon="user"
-          name='name'
-          error={ this.state.error.name ? 0 : 1 }
-          placeholder="username" 
-          onChange={this.handleChange}/>
-    
-        <Input
-          style={{ fontSize: "1rem", marginBottom: ".7rem" }}
-          icon="key"
-          error={ this.state.error.password ? 0 : 1 }
-          name='password'
-          type='password'
-          placeholder="password" 
-          onChange={this.handleChange}/>
-        {
-          isPending ?
-          <Button outlined loading={"true"}>Login</Button>
-          :
-          <Button outlined onClick={this.handleSubmit}>Login</Button>
-        }
+        <div className='admin-login_container'>
+          <div>
+            <Link to='/' className='admin-login_link'>
+              <Icon type="arrowLeftCircle" size="30px" color="#079992"/>
+              <p>Back</p>
+            </Link>
+          </div> 
+          {
+            !errorStatus ? null : 
+            <h5 className="admin-login_error_red"
+            >{ errorStatus }</h5>
+          }
+          <Input
+            style={{ fontSize: "1rem", marginBottom: ".7rem" }}
+            icon="user"
+            name='name'
+            error={ this.state.error.name ? 0 : 1 }
+            placeholder="username" 
+            onChange={this.handleChange}/>
+      
+          <Input
+            style={{ fontSize: "1rem", marginBottom: ".7rem" }}
+            icon="key"
+            error={ this.state.error.password ? 0 : 1 }
+            name='password'
+            type='password'
+            placeholder="password" 
+            onChange={this.handleChange}/>
+          {
+            isPending ?
+            <Button outlined loading={"true"}>Login</Button>
+            :
+            <Button outlined onClick={this.handleSubmit}>Login</Button>
+          }
+        </div>
       </div>
     );
   }
