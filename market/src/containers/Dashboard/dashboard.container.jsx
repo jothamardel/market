@@ -29,10 +29,10 @@ class Dashboard extends Component {
     } = this.props;
 
     getBusinesses();
-    getAllBusinessAddress();
-    getAllBusinessOwner();
-    getAllBusinessCoord();
-    getAllBusinessTag();
+    // getAllBusinessAddress();
+    // getAllBusinessOwner();
+    // getAllBusinessCoord();
+    // getAllBusinessTag();
   
     if ('geolocation' in navigator) {
       window.navigator.geolocation.getCurrentPosition((success) => {
@@ -40,10 +40,10 @@ class Dashboard extends Component {
         const lng = success.coords.longitude;
         getCoordinates( lat, lng);
       });
-      if (this.props.business.business) {
-        const { business: { business } } = this.props;
-        this.setState({ filteredBusiness: business });
-      }
+      // if (this.props.business.business) {
+      //   const { business: { business } } = this.props;
+      //   this.setState({ filteredBusiness: business });
+      // }
     }
 
     if (this.props.business.business) {
@@ -73,6 +73,7 @@ class Dashboard extends Component {
 
   render(){
     const { logoutUser } = this.props;
+    const { filteredBusiness } = this.state;
     return (
       <div className='dashboard'>
         <div className='dashboard_menu' onClick={ this.toggleDrawer }>
@@ -112,13 +113,13 @@ class Dashboard extends Component {
         <div className='dashboard-business_container'>
 
           {
-            (this.state.filteredBusiness.length > 0) ? 
-            this.state.filteredBusiness.map((item, index) => (
-              <div className='dashboard_business' onClick={() => this.props.showModal(item.phoneno)} key={item.id}>
+            (filteredBusiness.length > 0) ? 
+            filteredBusiness.map((item, index) => (
+              <div className='dashboard_business' onClick={() => this.props.showModal(item.phoneno)} key={item._id}>
                 <BusinessDetails 
-                  key={item.id}
-                  name = {item.name}
-                  phoneno = {item.phoneno}
+                  key={item._id}
+                  name = {item.business_name}
+                  phoneno = {item.phone_number}
                   rcNumber = {item.rc_number}
                   registered = {item.registered}
                 /> 
