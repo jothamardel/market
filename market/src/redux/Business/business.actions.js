@@ -4,7 +4,7 @@ import ConstantActionTypes from './business.constants';
 export const getBusinesses = () => (dispatch) => {
   dispatch({ type: ConstantActionTypes.GET_BUSINESSES_START });
 
-  fetch(`${process.env.REACT_APP_API_V1}/`, {
+  fetch(`${process.env.REACT_APP_API}/`, {
     method: 'get',
     headers: { 'Content-Type': 'application/json' }
   })
