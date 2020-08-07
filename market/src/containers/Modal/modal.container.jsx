@@ -3,6 +3,8 @@ import { Modal, Button } from "flwww";
 import { connect } from "react-redux";
 import { showModal } from "../../redux/Modal/modal.actions";
 
+import './modal.styles.css';
+
 class ShowModal extends Component {
  
  
@@ -23,7 +25,7 @@ class ShowModal extends Component {
             
 
           <h3>{ selectedBusiness[0].business_name }</h3>
-          <h3> RC Number: { selectedBusiness[0].rc_number }</h3>
+          <h3> RC Number: { !selectedBusiness[0].rc_number ? <span className='reg_status'>Not registered</span> : selectedBusiness[0].rc_number }</h3>
           <hr></hr>
           <p> Owner: { selectedBusiness[0].business_owner }</p>
           <p> Phone No: { selectedBusiness[0].phone_number }</p>

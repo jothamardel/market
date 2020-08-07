@@ -32,10 +32,6 @@ class Dashboard extends Component {
         const lng = success.coords.longitude;
         getCoordinates( lat, lng);
       });
-      // if (this.props.business.business) {
-      //   const { business: { business } } = this.props;
-      //   this.setState({ filteredBusiness: business });
-      // }
     }
 
     if (this.props.business.business) {
@@ -86,13 +82,18 @@ class Dashboard extends Component {
           </Badge>
         </div>
         <div className='dashboard_search'>
-          <Input
-            style={{ fontSize: "1rem", marginBottom: ".7rem" }}
-            className='search'
-            icon="search"
-            name='name'
-            onChange={ this.onSearchChange }
-            placeholder="search for business"/>
+          <div>
+
+            <Input
+              style={{ fontSize: "1rem", marginBottom: ".7rem", marginRight: "1rem" }}
+              className='search'
+              icon="search"
+              name='name'
+              onChange={ this.onSearchChange }
+              placeholder="search for business"/>
+            <span style={{ border: "1px solid black", padding: "0.7rem", cursor: "pointer" }} onClick={() => window.location.reload()}><Icon type="refresh" /> Refresh</span>
+          </div>
+
             <Button outlined 
             style={{  height: "30px" }}
             type='submit'
