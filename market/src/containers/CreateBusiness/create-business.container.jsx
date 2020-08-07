@@ -101,145 +101,148 @@ class CreateBusiness extends React.Component {
             status === 'Unable to resgister business.' ? 'error_red' : ''
           } create-business_container_message`}>{ status }</p>
         }
-        <div className='create-business_link'>
-          <Link to='/dashboard'>
-            <Icon type="arrowLeftCircle" size="30px" color="#079992"/>
-            <p>Back</p>
-          </Link>
-        </div>
-        <form onSubmit={this.handleSubmit} 
-          className='create-business_form'>
-
-          <Input 
-            className='custom-input' required 
-            type='text' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='Business Name *' 
-            name='businessname' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-
-          <Input 
-            className='custom-input' required 
-            type='number' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='Phone Number *' 
-            name='phoneno' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-
-          <Input 
-            className='custom-input' required 
-            type='text' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='RC Number *' 
-            name='rcNumber' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-
-          <Input 
-            className='custom-input' required 
-            type='text' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='Address *' 
-            name='address' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-
-          <Input 
-            className='custom-input' required 
-            type='text' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='City *' 
-            name='city' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-
-          <Input 
-            className='custom-input' required 
-            type='text' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='State *' 
-            name='state' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-
-          <Input 
-            className='custom-input' required 
-            type='text' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='category *' 
-            name='category' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-
-          <Input 
-            className='custom-input' required 
-            type='text' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='tag *' 
-            name='tag' 
-            onChange={this.onInputChange}
-            onClick={this.openTag}/>
-            {
-              this.state.showTag ? <Tags filteredTags={filteredTags}/> : null
-            }
-          
-          <Input 
-            className='custom-input' required 
-            type='text' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='Business Owner *' 
-            name='businessowner' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-
-          <Input 
-            className='custom-input' 
-            type='email' 
-            // onFocus="this.value=''"
-            autoComplete='off'
-            placeholder='Email (optional)' 
-            name='email' 
-            onChange={this.onInputChange}
-            onClick={this.closeTag}/>
-          
-          <div>
-            <CustomInput
-              style={{ width: '0.8rem' }}
-              type='checkbox' 
-              placeholder='registered' 
-              name='registered' 
-              onChange={this.onInputChange}/>
-              <span>
-                Registered with CAC
-              </span>
+        <div className='create-business_wrapper'>
+          <h1>Register a Business</h1>
+          <div className='create-business_link'>
+            <Link to='/dashboard'>
+              <Icon type="arrowLeftCircle" size="30px" color="#079992"/>
+              <p>Back</p>
+            </Link>
           </div>
-          {
-            isSending ?
-              <Button 
-                className='custom-button' 
-                type='submit' 
-                outlined
-                loading={"true"}
-                >Submit Details</Button>
-              :
-              <Button 
-                className='custom-button' 
-                type='submit' 
-                outlined
-                >Submit Details</Button>
-          }
-        </form>
+          <form onSubmit={this.handleSubmit} 
+            className='create-business_form'>
+
+            <Input 
+              className='custom-input' required 
+              type='text' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='Business Name *' 
+              name='businessname' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+
+            <Input 
+              className='custom-input' required 
+              type='number' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='Phone Number *' 
+              name='phoneno' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+
+            <Input 
+              className='custom-input' required 
+              type='text' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='RC Number *' 
+              name='rcNumber' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+
+            <Input 
+              className='custom-input' required 
+              type='text' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='Address *' 
+              name='address' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+
+            <Input 
+              className='custom-input' required 
+              type='text' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='City *' 
+              name='city' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+
+            <Input 
+              className='custom-input' required 
+              type='text' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='State *' 
+              name='state' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+
+            <Input 
+              className='custom-input' required 
+              type='text' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='category *' 
+              name='category' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+
+            <Input 
+              className='custom-input' required 
+              type='text' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='tag *' 
+              name='tag' 
+              onChange={this.onInputChange}
+              onClick={this.openTag}/>
+              {
+                this.state.showTag ? <Tags filteredTags={filteredTags}/> : null
+              }
+            
+            <Input 
+              className='custom-input' required 
+              type='text' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='Business Owner *' 
+              name='businessowner' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+
+            <Input 
+              className='custom-input' 
+              type='email' 
+              // onFocus="this.value=''"
+              autoComplete='off'
+              placeholder='Email (optional)' 
+              name='email' 
+              onChange={this.onInputChange}
+              onClick={this.closeTag}/>
+            
+            <div>
+              <CustomInput
+                style={{ width: '0.8rem' }}
+                type='checkbox' 
+                placeholder='registered' 
+                name='registered' 
+                onChange={this.onInputChange}/>
+                <span>
+                  Registered with CAC
+                </span>
+            </div>
+            {
+              isSending ?
+                <Button 
+                  className='custom-button' 
+                  type='submit' 
+                  outlined
+                  loading={"true"}
+                  >Submit Details</Button>
+                :
+                <Button 
+                  className='custom-button' 
+                  type='submit' 
+                  outlined
+                  >Submit Details</Button>
+            }
+          </form>
+        </div>
       </div>
     );
   }

@@ -4,7 +4,7 @@ export const registerBusinessAsync = (
   businessowner, businessname,
   phoneno, email, category,
   latitude, longitude, registered, rcNumber,
-  city, state, address, tag
+  city, state, address, tag, agent
 ) => (dispatch) => {
   dispatch({ type: ConstantActionTypes.REGISTER_BUSINESS_START });
   fetch(`${process.env.REACT_APP_API}/business`, {
@@ -13,7 +13,7 @@ export const registerBusinessAsync = (
       body: JSON.stringify({
         owner: businessowner,
         businessname, phoneno, email, category, latitude, longitude,
-        registered, rcNumber, city, state, address, tag
+        registered, rcNumber, city, state, address, tag, agent
       })
     })
     .then(response => {
