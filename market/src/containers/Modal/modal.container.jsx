@@ -9,45 +9,44 @@ class ShowModal extends Component {
   render(){
     
     const { showModal, index } = this.props.modal;
-    const { business: { business, address, owner, coord, tag } } = this.props;
-    const filteredBusiness = business.find(item  => item.phoneno === index);
-    const filteredAddress = address.find(item  => item.phoneno === index);
-    const filteredOwner = owner.find(item  => item.phoneno === index);
-    const filteredCoord = coord.find(item  => item.phoneno === index);
-    const filteredTag = tag.find(item  => item.phoneno === index);
+    const { business: { business } } = this.props;
+    const selectedBusiness = business.filter(item => {
+      return item._id.toString() === index.toString();
+    })
+    console.log(selectedBusiness);
     return (
       <div>
-
         <Modal
           isVisible={ showModal }
           toggleModal={ this.props.showModal }
           >
             
 
-          <h3>{ filteredBusiness.name }</h3>
-          <h3> RC Number: { filteredBusiness.rc_number }</h3>
+          <h3>{ selectedBusiness[0].business_name }</h3>
+          <h3> RC Number: { selectedBusiness[0].rc_number }</h3>
           <hr></hr>
-          <p> Owner: { filteredOwner.name }</p>
-          <p> Phone No: { filteredOwner.phoneno }</p>
-          <p> email: { filteredOwner.email }</p>
+          <p> Owner: { selectedBusiness[0].business_owner }</p>
+          <p> Phone No: { selectedBusiness[0].phone_number }</p>
+          <p> email: { selectedBusiness[0].email }</p>
           <hr></hr>
-          <p>Address: { filteredAddress.address }</p>
-          <p>City: { filteredAddress.city }</p>
-          <p>State: { filteredAddress.state }</p>
+          <p>Address: { selectedBusiness[0].address }</p>
+          <p>City: { selectedBusiness[0].city }</p>
+          <p>State: { selectedBusiness[0].state }</p>
           <hr></hr>
-          <p>Latitude: { filteredCoord.lat }</p>
-          <p>Longitude: { filteredCoord.lng }</p>
+          <p>Latitude: { selectedBusiness[0].coords.lat.$numberDecimal }</p>
+          <p>Longitude: { selectedBusiness[0].coords.lng.$numberDecimal }</p>
           <hr></hr>
-          <p>Category: { filteredTag.category }</p>
-          <p>Tag: { filteredTag.tag }</p>
+          <p>Category: { selectedBusiness[0].category }</p>
+          <p>Tag: { selectedBusiness[0].tag }</p>
 
 
           <Button onClick={ this.props.showModal } type="primary">Continue</Button>
-          <a href={ `tel: ${filteredOwner.phoneno}` }>
+          <a href={ `tel: ${selectedBusiness[0].phone_number}` }>
             <Button type="primary">Call</Button>
-          </a>
-
+          </a> 
         </Modal>
+         
+
       </div>
     )
   }

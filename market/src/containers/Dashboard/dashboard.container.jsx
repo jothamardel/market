@@ -4,7 +4,7 @@ import BusinessDetails from '../../components/Card/card.component';
 import { Drawer, Button, Icon, Input, Badge } from "flwww";
 import { connect } from "react-redux";
 import { logoutUser } from '../../redux/User/user.actions';
-import { getBusinesses, getAllBusinessAddress, getAllBusinessOwner, getAllBusinessCoord, getAllBusinessTag } from '../../redux/Business/business.actions';
+import { getBusinesses } from '../../redux/Business/business.actions';
 import { getCoordinates } from '../../redux/Coordinates/coordinates.actions';
 import { showModal } from "../../redux/Modal/modal.actions";
 import ShowModal from '../Modal/modal.container';
@@ -22,17 +22,9 @@ class Dashboard extends Component {
 
   componentDidMount(){
 
-    const {
-      getBusinesses, getCoordinates,
-      getAllBusinessAddress, getAllBusinessOwner,
-      getAllBusinessCoord, getAllBusinessTag
-    } = this.props;
+    const { getBusinesses } = this.props;
 
     getBusinesses();
-    // getAllBusinessAddress();
-    // getAllBusinessOwner();
-    // getAllBusinessCoord();
-    // getAllBusinessTag();
   
     if ('geolocation' in navigator) {
       window.navigator.geolocation.getCurrentPosition((success) => {
@@ -64,8 +56,9 @@ class Dashboard extends Component {
     let biz = [];
     if (this.props.business.business) {
       const { business: { business } } =  this.props;
+      console.log(business);
       biz = business.filter((item) => (
-        item.name.toLowerCase().includes(this.state.searchBox.toLowerCase())
+        item.business_name.toLowerCase().includes(this.state.searchBox.toLowerCase())
       ))
       this.setState({ filteredBusiness: biz })
     }
@@ -115,7 +108,7 @@ class Dashboard extends Component {
           {
             (filteredBusiness.length > 0) ? 
             filteredBusiness.map((item, index) => (
-              <div className='dashboard_business' onClick={() => this.props.showModal(item.phoneno)} key={`${index}, ${item._id}`}>
+              <div className='dashboard_business' onClick={() => this.props.showModal(item._id)} key={item._id}>
                 <BusinessDetails 
                   key={item._id}
                   name = {item.business_name}
@@ -180,11 +173,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   logoutUser: () => dispatch(logoutUser()),
   getBusinesses: () => dispatch(getBusinesses()),
-  getAllBusinessAddress: () => dispatch(getAllBusinessAddress()),
-  getAllBusinessOwner: () => dispatch(getAllBusinessOwner()),
-  getAllBusinessCoord: () => dispatch(getAllBusinessCoord()),
-  getAllBusinessTag: () => dispatch(getAllBusinessTag()),
-  getCoordinates: (lat, lng) => dispatch(getCoordinates(lat,lng)),
   showModal: (index) => dispatch(showModal(index))
 });
 

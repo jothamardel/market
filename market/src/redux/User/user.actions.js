@@ -7,7 +7,7 @@ export const loginUserAsync = (name, password) => (dispatch) => {
   dispatch({
     type: ConstantActionTypes.LOGIN_USER_START
   });
-  const { REACT_APP_API, REACT_APP_CORS } = process.env;
+  const { REACT_APP_API } = process.env;
   fetch(`${REACT_APP_API}/auth/login-admin`, {
     method: "post",
     headers: { 
