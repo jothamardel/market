@@ -8,6 +8,7 @@ import Dashboard from './containers/Dashboard/dashboard.container';
 import EditBusiness from './containers/EditBusiness/edit-business.container';
 import './App.css';
 import { connect } from 'react-redux';
+import ModalMessage from './components/ModalMessage/modal-message.component';
 
 
 const theme = {
@@ -21,22 +22,30 @@ const theme = {
   dangerTextColor: "#262626",
 };
 
-function App({ user }) {
+function App({ user, modal, register: { status } }) {
   return (
     <ThemeProvider theme={ theme }>
+      {
+        modal.showMessage ? 
+        <ModalMessage> 
+          { status }
+        </ModalMessage> : null
+      }
       <Switch>
         <Route exact path='/' component={HomePage}/>
         <Route exact path='/login' render={() => (user.status === 200 ? <Redirect to='/dashboard'/> : <AdminLogin />)}/>
         <Route exact path='/dashboard' component={Dashboard}/>
         <Route exact path='/register' component={CreateBusiness}/>
-        <Route exact path='/edit' component={EditBusiness} />
+        {/* <Route exact path='/dashboard' component={EditBusiness} /> */}
       </Switch>
     </ThemeProvider>
   );
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  modal: state.modal,
+  register: state.register
 });
 
 export default connect(mapStateToProps)(App);

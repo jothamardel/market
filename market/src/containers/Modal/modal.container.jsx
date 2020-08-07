@@ -28,7 +28,7 @@ class ShowModal extends Component {
           <h3> RC Number: { !selectedBusiness[0].rc_number ? <span className='reg_status'>Not registered</span> : selectedBusiness[0].rc_number }</h3>
           <hr></hr>
           <p> Owner: { selectedBusiness[0].business_owner }</p>
-          <p> Phone No: { selectedBusiness[0].phone_number }</p>
+          <p> Phone No: {  '0' + selectedBusiness[0].phone_number }</p>
           <p> email: { selectedBusiness[0].email }</p>
           <hr></hr>
           <p>Address: { selectedBusiness[0].address }</p>
@@ -42,10 +42,10 @@ class ShowModal extends Component {
           <p>Tag: { selectedBusiness[0].tag }</p>
 
           <div className='reg_button'>
-            <Link to='/edit'>
+            <Link to='/dashboard'>
               <Button onClick={ this.props.showModal } type="primary" style={{color: "white"}}>Edit</Button>
             </Link>
-            <a href={ `tel: ${selectedBusiness[0].phone_number}` }>
+            <a href={ `tel: ${'0' + selectedBusiness[0].phone_number}` }>
               <Button type="primary" style={{color: "white"}}>Call</Button>
             </a> 
           </div>

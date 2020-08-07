@@ -13,7 +13,7 @@ const BusinessDetails = ({ name, phoneno, rcNumber, registered}) => {
         className='business-details_card'>
         <h3 style={{ marginTop: ".5rem" }}>{ name }</h3>
         <p>RC Number: { !rcNumber ? <span className='reg_status'>not registered</span> : rcNumber}</p>
-        <p>Phone no: { phoneno }</p>
+        <p>Phone no: { '0' + phoneno }</p>
 
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button outlined type="primary">view</Button>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Input, Icon, Drawer } from 'flwww';
 import { registerBusinessAsync } from '../../redux/RegisterBusiness/register-business.actions';
 import { getCoordinates } from '../../redux/Coordinates/coordinates.actions';
+import { showMessage } from '../../redux/Modal/modal.actions';
 import CustomInput from '../../components/CustomInput/custom-input.component';
 
 import './create-business.styles.css';
@@ -69,7 +70,7 @@ class CreateBusiness extends React.Component {
     
     
     if ('geolocation' in navigator) {
-      const { registerBusinessAsync, 
+      const { registerBusinessAsync, showMessage 
       } = this.props;
       window.navigator.geolocation.getCurrentPosition((success) => {
         const lat = success.coords.latitude;
@@ -87,6 +88,7 @@ class CreateBusiness extends React.Component {
           city, state, address, tag, currentUser
         );
       });
+      showMessage();
     }
 
     
@@ -267,7 +269,7 @@ class CreateBusiness extends React.Component {
                   <h3>Register business</h3>
                 </div>
               </Link>
-              <Link to='/update'>
+              <Link to='/dashboard'>
                 <div className='drawer-items_menu'>
                   <Icon type="edit" color='#079992'/>
                   <h3>Update business</h3>
@@ -312,7 +314,8 @@ const mapDispatchToProps = (dispatch) => ({
     latitude, longitude, registered, rcNumber,
     city, state, address, tag, agent
   )),
-  getCoordinates: (lat, lng) => dispatch(getCoordinates(lat, lng))
+  getCoordinates: (lat, lng) => dispatch(getCoordinates(lat, lng)),
+  showMessage: () => dispatch(showMessage())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateBusiness);

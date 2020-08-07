@@ -63,6 +63,11 @@ class Dashboard extends Component {
   render(){
     const { logoutUser } = this.props;
     const { filteredBusiness } = this.state;
+    let regBusinesses = [];
+    if (this.props.business.business) {
+      const { business: { business } } =  this.props;
+      regBusinesses = business;
+    }
     return (
       <div className='dashboard'>
         <div className='dashboard_menu' onClick={ this.toggleDrawer }>
@@ -71,13 +76,13 @@ class Dashboard extends Component {
         </div>
         <h4>Businesses</h4>
         <div className='dashboard_stat'>
-          <Badge count={100}>
+          <Badge count={this.props.business.business ? regBusinesses.filter(business => business.city.toLowerCase() === 'abuja').length : 'loading...'}>
             <p>Abuja</p>
           </Badge>
-          <Badge count={200}>
+          <Badge count={this.props.business.business ? regBusinesses.length : 'loading...'}>
             <p>Total</p>
           </Badge>
-          <Badge count={100}>
+          <Badge count={this.props.business.business ? regBusinesses.filter(business => business.city.toLowerCase() === 'jos').length : 'loading'}>
             <p>Jos</p>                      
           </Badge>
         </div>
@@ -148,7 +153,7 @@ class Dashboard extends Component {
                 <h3>Register business</h3>
               </div>
             </Link>
-            <Link to='/update'>
+            <Link to='/dashboard'>
               <div className='drawer-items_menu'>
                 <Icon type="edit" color='#079992'/>
                 <h3>Update business</h3>
