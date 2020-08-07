@@ -3,7 +3,7 @@ import ConstantActionTypes from './register-business.constants';
 export const registerBusinessAsync = (
   businessowner, businessname,
   phoneno, email, category,
-  latitude, longitude, registered, rcNumber,
+  latitude, longitude, registered = false, rcNumber,
   city, state, address, tag, agent
 ) => (dispatch) => {
   dispatch({ type: ConstantActionTypes.REGISTER_BUSINESS_START });

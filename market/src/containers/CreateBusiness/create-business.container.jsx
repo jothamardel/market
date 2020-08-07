@@ -34,6 +34,9 @@ class CreateBusiness extends React.Component {
   }
 
   componentDidMount() {
+
+    // const { currentUser } = this.props.user
+    //     console.log(currentUser)
     
   }
 
@@ -66,22 +69,21 @@ class CreateBusiness extends React.Component {
     
     if ('geolocation' in navigator) {
       const { registerBusinessAsync, 
-        // coord: { location: {lat, lng}, getCoordinates } 
       } = this.props;
       window.navigator.geolocation.getCurrentPosition((success) => {
         const lat = success.coords.latitude;
         const lng = success.coords.longitude;
-        // getCoordinates( lat, lng);
         const {
           businessname, phoneno, rcNumber,
           businessowner, email, address,
           city, state, tag, category, registered
         } = this.state;
+        const { currentUser } = this.props.user
         registerBusinessAsync(
           businessowner, businessname, phoneno,
           email, category,   
           lat, lng, registered, rcNumber,
-          city, state, address, tag,
+          city, state, address, tag, currentUser
         );
       });
     }
@@ -96,12 +98,12 @@ class CreateBusiness extends React.Component {
     }); 
     return (
       <div className='create-business_container'>
+        <div className='create-business_wrapper'>
         {
           !status ? null : <p className={`${
             status === 'Unable to resgister business.' ? 'error_red' : ''
           } create-business_container_message`}>{ status }</p>
         }
-        <div className='create-business_wrapper'>
           <h1>Register a Business</h1>
           <div className='create-business_link'>
             <Link to='/dashboard'>
@@ -133,7 +135,7 @@ class CreateBusiness extends React.Component {
               onClick={this.closeTag}/>
 
             <Input 
-              className='custom-input' required 
+              className='custom-input'
               type='text' 
               // onFocus="this.value=''"
               autoComplete='off'
@@ -249,8 +251,8 @@ class CreateBusiness extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  coord: state.coord,
-  register: state.register
+  register: state.register,
+  user: state.user
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -258,12 +260,12 @@ const mapDispatchToProps = (dispatch) => ({
     businessowner, businessname,
     phoneno, email, category,
     latitude, longitude, registered, rcNumber,
-    city, state, address, tag
+    city, state, address, tag, agent
   ) => dispatch(registerBusinessAsync(
     businessowner, businessname,
     phoneno, email, category,
     latitude, longitude, registered, rcNumber,
-    city, state, address, tag
+    city, state, address, tag, agent
   )),
   getCoordinates: (lat, lng) => dispatch(getCoordinates(lat, lng))
 });
