@@ -91,7 +91,7 @@ class Dashboard extends Component {
               name='name'
               onChange={ this.onSearchChange }
               placeholder="search for business"/>
-            <span style={{ border: "1px solid black", padding: "0.7rem", cursor: "pointer" }} onClick={() => window.location.reload()}><Icon type="refresh" /> Refresh</span>
+            <span style={{ border: "1px solid black", padding: "0.3rem", cursor: "pointer", fontSize: "0.6rem" }} onClick={() => window.location.reload()}><Icon type="refresh" /></span>
           </div>
 
             <Button outlined 

@@ -15,7 +15,6 @@ class ShowModal extends Component {
     const selectedBusiness = business.filter(item => {
       return item._id.toString() === index.toString();
     })
-    console.log(selectedBusiness);
     return (
       <div>
         <Modal
