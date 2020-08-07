@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Modal, Button } from "flwww";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import { showModal } from "../../redux/Modal/modal.actions";
 
 import './modal.styles.css';
@@ -40,11 +41,14 @@ class ShowModal extends Component {
           <p>Category: { selectedBusiness[0].category }</p>
           <p>Tag: { selectedBusiness[0].tag }</p>
 
-
-          <Button onClick={ this.props.showModal } type="primary">Continue</Button>
-          <a href={ `tel: ${selectedBusiness[0].phone_number}` }>
-            <Button type="primary">Call</Button>
-          </a> 
+          <div className='reg_button'>
+            <Link to='/edit'>
+              <Button onClick={ this.props.showModal } type="primary" style={{color: "white"}}>Edit</Button>
+            </Link>
+            <a href={ `tel: ${selectedBusiness[0].phone_number}` }>
+              <Button type="primary" style={{color: "white"}}>Call</Button>
+            </a> 
+          </div>
         </Modal>
          
 

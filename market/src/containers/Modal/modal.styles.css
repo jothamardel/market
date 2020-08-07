@@ -1,5 +1,10 @@
 .reg_status {
   color: red;
   font-weight: 100;
-  
+
+}
+
+.reg_button {
+  display: flex;
+  justify-content: space-evenly;
 }
