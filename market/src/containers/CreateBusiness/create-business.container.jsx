@@ -5,6 +5,7 @@ import { registerBusinessAsync } from '../../redux/RegisterBusiness/register-bus
 import { getCoordinates } from '../../redux/Coordinates/coordinates.actions';
 import { showMessage } from '../../redux/Modal/modal.actions';
 import CustomInput from '../../components/CustomInput/custom-input.component';
+import ModalMessage from '../../components/ModalMessage/modal-message.component';
 
 import './create-business.styles.css';
 import Tags from '../../components/Tags/tags.component';
@@ -99,7 +100,7 @@ class CreateBusiness extends React.Component {
   }
 
   render() {
-    const { register: { isSending, status } } = this.props;
+    const { register: { isSending, status }, modal } = this.props;
     const filteredTags = TagsItems.filter(item => {
       return item.toLowerCase().includes(this.state.tagItems.toLowerCase())
     }); 
@@ -258,6 +259,7 @@ class CreateBusiness extends React.Component {
               }
             </form>
           </div>
+          
           <Drawer
             showDrawer={ this.state.drawerIsVisible }
             toggleDrawer={ this.toggleDrawer }
@@ -291,6 +293,12 @@ class CreateBusiness extends React.Component {
               </Link>
             </div>
           </Drawer>
+          {
+            modal.showMessage ? 
+            <ModalMessage> 
+              { status }
+            </ModalMessage> : null
+          }
         </div>
       </React.Fragment>
     );
@@ -299,7 +307,8 @@ class CreateBusiness extends React.Component {
 
 const mapStateToProps = (state) => ({
   register: state.register,
-  user: state.user
+  user: state.user,
+  modal: state.modal
 })
 
 const mapDispatchToProps = (dispatch) => ({

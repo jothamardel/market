@@ -5,10 +5,10 @@ import CreateBusiness from './containers/CreateBusiness/create-business.containe
 import HomePage from './components/HomePage/home-page.component';
 import AdminLogin from './containers/AdminLogin/admin-login.container';
 import Dashboard from './containers/Dashboard/dashboard.container';
-import EditBusiness from './containers/EditBusiness/edit-business.container';
+// import EditBusiness from './containers/EditBusiness/edit-business.container';
 import './App.css';
 import { connect } from 'react-redux';
-import ModalMessage from './components/ModalMessage/modal-message.component';
+// import ModalMessage from './components/ModalMessage/modal-message.component';
 
 
 const theme = {
@@ -25,12 +25,6 @@ const theme = {
 function App({ user, modal, register: { status } }) {
   return (
     <ThemeProvider theme={ theme }>
-      {
-        modal.showMessage ? 
-        <ModalMessage> 
-          { status }
-        </ModalMessage> : null
-      }
       <Switch>
         <Route exact path='/' component={HomePage}/>
         <Route exact path='/login' render={() => (user.status === 200 ? <Redirect to='/dashboard'/> : <AdminLogin />)}/>
