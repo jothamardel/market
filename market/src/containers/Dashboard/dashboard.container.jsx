@@ -74,6 +74,7 @@ class Dashboard extends Component {
           <Icon type="menu"  color='#079992'/>
           <span>Menu</span>
         </div>
+        <h4>{`Welcome, ${this.props.user.currentUser ? this.props.user.currentUser.name : null}!`}</h4>
         <h4>Businesses</h4>
         <div className='dashboard_stat'>
           <Badge count={this.props.business.business ? regBusinesses.filter(business => business.city.toLowerCase() === 'abuja').length : 'loading...'}>
@@ -101,7 +102,9 @@ class Dashboard extends Component {
                 const { getBusinesses } = this.props;
                 getBusinesses();
                 window.location.reload()
-              }}><Icon type="refresh" />
+              }}>
+                {/* <Icon type="refresh" />  */}
+                X
             </span>
             
           </div>
@@ -180,7 +183,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => ({
   business: state.business,
-  modal: state.modal
+  modal: state.modal,
+  user: state.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
