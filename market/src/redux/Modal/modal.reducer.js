@@ -3,7 +3,7 @@ import ConstantActionTypes from './modal.constants';
 const INITIAL_STATE = {
   showModal: false,
   showMessage: false,
-  index: null
+  index: null 
 }
 
 const modalReducer = (state = INITIAL_STATE, action = {}) => {
@@ -15,6 +15,12 @@ const modalReducer = (state = INITIAL_STATE, action = {}) => {
         showModal: !state.showModal,
         index: action.payload
       };
+    case ConstantActionTypes.EDIT_BUSINESS:
+      return {
+        showModal: false,
+        showMessage: false,
+        index: action.payload
+      }
     case ConstantActionTypes.SHOW_MESSAGE:
       return {
         ...state,

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Modal, Button } from "flwww";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { showModal } from "../../redux/Modal/modal.actions";
+import { showModal, editBusiness } from "../../redux/Modal/modal.actions";
 
 import './modal.styles.css';
 
@@ -42,8 +42,8 @@ class ShowModal extends Component {
           <p>Tag: { selectedBusiness[0].tag }</p>
 
           <div className='reg_button'>
-            <Link to='/dashboard'>
-              <Button onClick={ this.props.showModal } type="primary" style={{color: "white"}}>Edit</Button>
+            <Link to='/edit'>
+              <Button onClick={ () => this.props.editBusiness(selectedBusiness[0]._id) } type="primary" style={{color: "white"}}>Edit</Button>
             </Link>
             <a href={ `tel: ${'0' + selectedBusiness[0].phone_number}` }>
               <Button type="primary" style={{color: "white"}}>Call</Button>
@@ -64,7 +64,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  showModal: () => dispatch(showModal())
+  showModal: () => dispatch(showModal()),
+  editBusiness: (index) => dispatch(editBusiness(index))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowModal);
