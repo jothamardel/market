@@ -5,7 +5,7 @@ import CreateBusiness from './containers/CreateBusiness/create-business.containe
 import HomePage from './components/HomePage/home-page.component';
 import AdminLogin from './containers/AdminLogin/admin-login.container';
 // import Dashboard from './containers/Dashboard/dashboard.container';
-import Dashboard from './containers/Kasuwa/dashboard.component';
+import KasuwaDashboard from './containers/Kasuwa/dashboard.component';
 import Registration from './containers/KasuwaRegistration/registration.component';
 import EditBusiness from './containers/EditBusiness/edit-business.container';
 import './App.css';
@@ -31,7 +31,7 @@ function App({ user, modal, register: { status } }) {
         <Route exact path='/' render={() => user.status === 200 ? <Redirect to="/dashboard" /> : <HomePage />} />
         <Route exact path='/register-user' render={() => (user.status === 200 ? <Redirect to='/dashboard' /> : <Registration />)} />
         <Route exact path='/login' render={() => user.status === 200 ? <Redirect to="/dashboard" /> : <AdminLogin />} />
-        <Route exact path='/dashboard' render={() => <Dashboard />} />
+        <Route exact path='/dashboard' render={() => <KasuwaDashboard />} />
         <Route exact path='/register' component={CreateBusiness} />
         <Route exact path='/edit' component={EditBusiness} />
       </Switch>

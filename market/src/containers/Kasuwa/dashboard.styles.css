@@ -11,6 +11,42 @@
   background: #079990;
 }
 
+.drawer-items {
+  margin-top: 50%;
+}
+
+.drawer-items_menu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.drawer-items_menu h3 {
+  margin: 0;
+  margin-top: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #079990;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
 
 .kasuwa-dash {
   display: flex;
