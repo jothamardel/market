@@ -2,15 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon, Button } from 'flwww';
 import "./dashboard.styles.css";
+import { connect } from 'react-redux';
 
 
-const Dashboard = () => (
+const Dashboard = ({ user }) => (
   <div className='kasuwa-dashboard'>
     <div className="kasuwa-menu-bar">
       <Icon type="menu" color="white" />
     </div>
     <div className="kasuwa-dash">
-      <h3>Welcome, John</h3>
+      <h3>Welcome, {user.currentUser[0].firstName}</h3>
       <h4>NGN 0.00</h4>
       <div>
         {/* <Badge count={10}> */}
@@ -40,4 +41,8 @@ const Dashboard = () => (
   </div>
 );
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+export default connect(mapStateToProps)(Dashboard);

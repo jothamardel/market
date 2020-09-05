@@ -28,9 +28,9 @@ function App({ user, modal, register: { status } }) {
   return (
     <ThemeProvider theme={theme}>
       <Switch>
-        <Route exact path='/' component={HomePage} />
+        <Route exact path='/' render={() => user.status === 200 ? <Redirect to="/dashboard" /> : <HomePage />} />
         <Route exact path='/register-user' render={() => (user.status === 200 ? <Redirect to='/dashboard' /> : <Registration />)} />
-        <Route exact path='/login' render={() => <AdminLogin />} />
+        <Route exact path='/login' render={() => user.status === 200 ? <Redirect to="/dashboard" /> : <AdminLogin />} />
         <Route exact path='/dashboard' render={() => <Dashboard />} />
         <Route exact path='/register' component={CreateBusiness} />
         <Route exact path='/edit' component={EditBusiness} />

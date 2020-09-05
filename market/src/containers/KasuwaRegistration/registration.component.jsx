@@ -42,7 +42,12 @@ class Registration extends React.Component {
               <p>Back</p>
             </Link> */}
             <h3>Create an account.</h3>
+
           </div>
+          {
+            this.props.user.currentUser ?
+              <p>{this.props.user.currentUser}</p> : null
+          }
           <form onSubmit={this.registerUser}>
             <Input required name="firstName" type='text' onChange={this.onInputChange} placeholder='First Name' />
             <Input required name="lastName" type='text' onChange={this.onInputChange} placeholder='Last Name' />
@@ -50,10 +55,8 @@ class Registration extends React.Component {
             <Input name="email" type='email' onChange={this.onInputChange} placeholder='Email' />
             <Input required name="city" type='text' onChange={this.onInputChange} placeholder='City' />
             <Input required name="state" type='text' onChange={this.onInputChange} placeholder='State' />
-            <Input required name="state" type='password' onChange={this.onInputChange} placeholder='password' />
-            <Link to="/dashboard">
-              <Button type="submit">Register</Button>
-            </Link>
+            <Input required name="password" type='password' onChange={this.onInputChange} placeholder='password' />
+            <Button type="submit">Register</Button>
             <Link to='/'>
               <Button>Back</Button>
             </Link>
@@ -72,8 +75,12 @@ class Registration extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
 const mapDispatchToProps = (dispatch) => ({
   createUserAsync: (firstName, lastName, number, email, city, state, password) => dispatch(createUserAsync(firstName, lastName, number, email, city, state, password))
 });
 
-export default connect(null, mapDispatchToProps)(Registration);
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
