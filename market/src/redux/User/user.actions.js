@@ -3,7 +3,7 @@ import ConstantActionTypes from './user.constants';
 
 export const logoutUser = () => ({ type: ConstantActionTypes.LOGOUT_USER });
 
-export const loginUserAsync = (name, password) => (dispatch) => {
+export const loginUserAsync = (number, password) => (dispatch) => {
   dispatch({
     type: ConstantActionTypes.LOGIN_USER_START
   });
@@ -13,12 +13,12 @@ export const loginUserAsync = (name, password) => (dispatch) => {
     headers: {
       "Access-Control-Request-Method": "POST",
       "Access-Control-Request-Headers": "origin, x-requested-with, accept",
-      "Access-Control-Allow-Origin": "https://the-market-place.vercel.app"",
+      "Access-Control-Allow-Origin": "https://the-market-place.vercel.app",
       "Origin": "https://the-market-place.vercel.app",
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name,
+      number,
       password
     })
   })
