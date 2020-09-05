@@ -1,6 +1,6 @@
 {
-  "short_name": "Lutuk",
-  "name": "The market place",
+  "short_name": "Kasuwa",
+  "name": "...powering small businesses.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#079992",
-  "background_color": "#079992"
+  "theme_color": "#fffff",
+  "background_color": "#fffff"
 }
