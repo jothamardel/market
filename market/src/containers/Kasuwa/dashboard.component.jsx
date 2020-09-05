@@ -11,7 +11,7 @@ const Dashboard = ({ user }) => (
       <Icon type="menu" color="white" />
     </div>
     <div className="kasuwa-dash">
-      <h3>Welcome, {user.currentUser[0].firstName}</h3>
+      <h3>Welcome, {user.currentUser ? user.currentUser[0].firstName : null}</h3>
       <h4>NGN 0.00</h4>
       <div>
         {/* <Badge count={10}> */}
