@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Button } from 'flwww';
+import { createUserAsync } from "../../redux/User/user.actions";
 import "./registration.styles.css";
+import { connect } from 'react-redux';
 
 
 class Registration extends React.Component {
@@ -13,7 +15,8 @@ class Registration extends React.Component {
       number: "",
       email: "",
       city: "",
-      state: ""
+      state: "",
+      password: ""
     }
   }
 
@@ -24,6 +27,9 @@ class Registration extends React.Component {
 
   registerUser = (event) => {
     event.preventDefault();
+    const { createUserAsync } = this.props;
+    const { firstName, lastName, number, email, city, state, password } = this.state;
+    createUserAsync(firstName, lastName, number, email, city, state, password);
   }
 
   render() {
@@ -44,6 +50,7 @@ class Registration extends React.Component {
             <Input name="email" type='email' onChange={this.onInputChange} placeholder='Email' />
             <Input required name="city" type='text' onChange={this.onInputChange} placeholder='City' />
             <Input required name="state" type='text' onChange={this.onInputChange} placeholder='State' />
+            <Input required name="state" type='password' onChange={this.onInputChange} placeholder='password' />
             <Link to="/dashboard">
               <Button type="submit">Register</Button>
             </Link>
@@ -65,4 +72,8 @@ class Registration extends React.Component {
   }
 }
 
-export default Registration;
+const mapDispatchToProps = (dispatch) => ({
+  createUserAsync: (firstName, lastName, number, email, city, state, password) => dispatch(createUserAsync(firstName, lastName, number, email, city, state, password))
+});
+
+export default connect(null, mapDispatchToProps)(Registration);

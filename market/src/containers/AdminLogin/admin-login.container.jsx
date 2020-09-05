@@ -66,7 +66,7 @@ class AdminLogin extends React.Component {
             icon="user"
             name='name'
             error={this.state.error.name ? 0 : 1}
-            placeholder="username"
+            placeholder="Mobile Number"
             onChange={this.handleChange} />
 
           <Input
