@@ -13,7 +13,7 @@ export const loginUserAsync = (name, password) => (dispatch) => {
     headers: {
       "Access-Control-Request-Method": "POST",
       "Access-Control-Request-Headers": "origin, x-requested-with, accept",
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": "https://the-market-place.vercel.app"",
       "Origin": "https://the-market-place.vercel.app",
       'Content-Type': 'application/json'
     },
