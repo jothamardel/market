@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Data } from '../../assets/data.svg';
+import { ReactComponent as Data } from '../../assets/savings.svg';
 import { Button } from 'flwww';
 
 import './home-page.styles.css';
@@ -14,7 +14,7 @@ const HomePage = () => (
     </div>
     <h1>Kasuwa</h1>
     <p>...powering small businesses.</p>
-    <Link to='/login'>
+    <Link to='/register-user'>
       <Button outlined >Get Started</Button>
     </Link>
   </div>

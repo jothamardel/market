@@ -13,7 +13,7 @@ import TagsItems from '../../utils/tags';
 import { connect } from 'react-redux';
 
 class CreateBusiness extends React.Component {
-  constructor(){
+  constructor() {
     super();
     this.state = {
       businessname: '',
@@ -30,7 +30,7 @@ class CreateBusiness extends React.Component {
       lng: '',
       registered: '',
       showTag: false,
-      tagItems:'',
+      tagItems: '',
       loading: false,
       drawerIsVisible: false
     }
@@ -40,7 +40,7 @@ class CreateBusiness extends React.Component {
 
     // const { currentUser } = this.props.user
     //     console.log(currentUser)
-    
+
   }
 
   onInputChange = (event) => {
@@ -63,15 +63,15 @@ class CreateBusiness extends React.Component {
     this.setState({ showTag: true })
   }
   closeTag = () => {
-    this.setState({ showTag:  false })
+    this.setState({ showTag: false })
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
-    
+
+
     if ('geolocation' in navigator) {
-      const { registerBusinessAsync, showMessage 
+      const { registerBusinessAsync, showMessage
       } = this.props;
       window.navigator.geolocation.getCurrentPosition((success) => {
         const lat = success.coords.latitude;
@@ -84,7 +84,7 @@ class CreateBusiness extends React.Component {
         const { currentUser } = this.props.user
         registerBusinessAsync(
           businessowner, businessname, phoneno,
-          email, category,   
+          email, category,
           lat, lng, registered, rcNumber,
           city, state, address, tag, currentUser
         );
@@ -92,7 +92,7 @@ class CreateBusiness extends React.Component {
       showMessage();
     }
 
-    
+
   }
 
   toggleDrawer = () => {
@@ -103,201 +103,204 @@ class CreateBusiness extends React.Component {
     const { register: { isSending, status }, modal } = this.props;
     const filteredTags = TagsItems.filter(item => {
       return item.toLowerCase().includes(this.state.tagItems.toLowerCase())
-    }); 
+    });
     return (
       <React.Fragment>
-        
-        <div className='dashboard_menu' onClick={ this.toggleDrawer }>
-          <Icon type="menu"  color='#079992'/>
+
+        {/* <div className='dashboard_menu' onClick={this.toggleDrawer}>
+          <Icon type="menu" color='#079992' />
           <span>Menu</span>
+        </div> */}
+        <div className="kasuwa-menu-bar">
+          <Icon type="menu" color="white" />
         </div>
         <div className='create-business_container'>
           <div className='create-business_wrapper'>
-          {
-            !status ? null : <p className={`${
-              status === 'Unable to resgister business.' ? 'error_red' : ''
-            } create-business_container_message`}>{ status }</p>
-          }
-            <h1>Register a Business</h1>
+            {
+              !status ? null : <p className={`${
+                status === 'Unable to resgister business.' ? 'error_red' : ''
+                } create-business_container_message`}>{status}</p>
+            }
             <div className='create-business_link'>
               <Link to='/dashboard'>
-                <Icon type="arrowLeftCircle" size="30px" color="#079992"/>
+                <Icon type="arrowLeftCircle" size="30px" color="#079992" />
                 <p>Back</p>
               </Link>
             </div>
-            <form onSubmit={this.handleSubmit} 
+            <h1>Register your Business</h1>
+            <form onSubmit={this.handleSubmit}
               className='create-business_form'>
 
-              <Input 
-                className='custom-input' required 
-                type='text' 
+              <Input
+                className='custom-input' required
+                type='text'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='Business Name *' 
-                name='businessname' 
+                placeholder='Business Name *'
+                name='businessname'
                 onChange={this.onInputChange}
-                onClick={this.closeTag}/>
+                onClick={this.closeTag} />
 
-              <Input 
-                className='custom-input' required 
-                type='number' 
+              <Input
+                className='custom-input' required
+                type='number'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='Phone Number *' 
-                name='phoneno' 
+                placeholder='Phone Number *'
+                name='phoneno'
                 onChange={this.onInputChange}
-                onClick={this.closeTag}/>
+                onClick={this.closeTag} />
 
-              <Input 
+              <Input
                 className='custom-input'
-                type='text' 
+                type='text'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='RC Number *' 
-                name='rcNumber' 
+                placeholder='RC Number *'
+                name='rcNumber'
                 onChange={this.onInputChange}
-                onClick={this.closeTag}/>
+                onClick={this.closeTag} />
 
-              <Input 
-                className='custom-input' required 
-                type='text' 
+              <Input
+                className='custom-input' required
+                type='text'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='Address *' 
-                name='address' 
+                placeholder='Address *'
+                name='address'
                 onChange={this.onInputChange}
-                onClick={this.closeTag}/>
+                onClick={this.closeTag} />
 
-              <Input 
-                className='custom-input' required 
-                type='text' 
+              <Input
+                className='custom-input' required
+                type='text'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='City *' 
-                name='city' 
+                placeholder='City *'
+                name='city'
                 onChange={this.onInputChange}
-                onClick={this.closeTag}/>
+                onClick={this.closeTag} />
 
-              <Input 
-                className='custom-input' required 
-                type='text' 
+              <Input
+                className='custom-input' required
+                type='text'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='State *' 
-                name='state' 
+                placeholder='State *'
+                name='state'
                 onChange={this.onInputChange}
-                onClick={this.closeTag}/>
+                onClick={this.closeTag} />
 
-              <Input 
-                className='custom-input' required 
-                type='text' 
+              <Input
+                className='custom-input' required
+                type='text'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='category *' 
-                name='category' 
+                placeholder='category *'
+                name='category'
                 onChange={this.onInputChange}
-                onClick={this.closeTag}/>
+                onClick={this.closeTag} />
 
-              <Input 
-                className='custom-input' required 
-                type='text' 
+              <Input
+                className='custom-input' required
+                type='text'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='tag *' 
-                name='tag' 
+                placeholder='tag *'
+                name='tag'
                 onChange={this.onInputChange}
-                onClick={this.openTag}/>
-                {
-                  this.state.showTag ? <Tags filteredTags={filteredTags}/> : null
-                }
-              
-              <Input 
-                className='custom-input' required 
-                type='text' 
-                // onFocus="this.value=''"
-                autoComplete='off'
-                placeholder='Business Owner *' 
-                name='businessowner' 
-                onChange={this.onInputChange}
-                onClick={this.closeTag}/>
+                onClick={this.openTag} />
+              {
+                this.state.showTag ? <Tags filteredTags={filteredTags} /> : null
+              }
 
-              <Input 
-                className='custom-input' 
-                type='email' 
+              <Input
+                className='custom-input' required
+                type='text'
                 // onFocus="this.value=''"
                 autoComplete='off'
-                placeholder='Email (optional)' 
-                name='email' 
+                placeholder='Business Owner *'
+                name='businessowner'
                 onChange={this.onInputChange}
-                onClick={this.closeTag}/>
-              
+                onClick={this.closeTag} />
+
+              <Input
+                className='custom-input'
+                type='email'
+                // onFocus="this.value=''"
+                autoComplete='off'
+                placeholder='Email (optional)'
+                name='email'
+                onChange={this.onInputChange}
+                onClick={this.closeTag} />
+
               <div>
                 <CustomInput
                   style={{ width: '0.8rem' }}
-                  type='checkbox' 
-                  placeholder='registered' 
-                  name='registered' 
-                  onChange={this.onInputChange}/>
-                  <span>
-                    Registered with CAC
+                  type='checkbox'
+                  placeholder='registered'
+                  name='registered'
+                  onChange={this.onInputChange} />
+                <span>
+                  Registered with CAC
                   </span>
               </div>
               {
                 isSending ?
-                  <Button 
-                    className='custom-button' 
-                    type='submit' 
+                  <Button
+                    className='custom-button'
+                    type='submit'
                     outlined
                     loading={"true"}
-                    >Submit Details</Button>
+                  >Submit Details</Button>
                   :
-                  <Button 
-                    className='custom-button' 
-                    type='submit' 
+                  <Button
+                    className='custom-button'
+                    type='submit'
                     outlined
-                    >Submit Details</Button>
+                  >Submit Details</Button>
               }
             </form>
           </div>
-          
+
           <Drawer
-            showDrawer={ this.state.drawerIsVisible }
-            toggleDrawer={ this.toggleDrawer }
-            >
+            showDrawer={this.state.drawerIsVisible}
+            toggleDrawer={this.toggleDrawer}
+          >
             <div className='drawer-items'>
               <Link to='/register'>
                 <div className='drawer-items_menu'>
-                  <Icon type="edit2" size='25px' color='#079992'/>
+                  <Icon type="edit2" size='25px' color='#079992' />
                   <h3>Register business</h3>
                 </div>
               </Link>
               <Link to='/dashboard'>
                 <div className='drawer-items_menu'>
-                  <Icon type="edit" color='#079992'/>
+                  <Icon type="edit" color='#079992' />
                   <h3>Update business</h3>
                 </div>
               </Link>
               <Link to='/dashboard'>
                 <div className='drawer-items_menu'>
-                  <Icon type="book" color='#079992'/>
+                  <Icon type="book" color='#079992' />
                   <h3>View business</h3>
                 </div>
               </Link>
-              <Link to='/login' 
+              <Link to='/login'
               // onClick={ logoutUser }
               >
                 <div className='drawer-items_menu'>
-                  <Icon type="logout" color='#079992'/>
+                  <Icon type="logout" color='#079992' />
                   <h3>Logout</h3>
                 </div>
               </Link>
             </div>
           </Drawer>
           {
-            modal.showMessage ? 
-            <ModalMessage> 
-              { status }
-            </ModalMessage> : null
+            modal.showMessage ?
+              <ModalMessage>
+                {status}
+              </ModalMessage> : null
           }
         </div>
       </React.Fragment>
