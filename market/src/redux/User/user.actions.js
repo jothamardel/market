@@ -60,7 +60,7 @@ export const loginUserAsync = (number, password) => (dispatch) => {
 
 export const createUserAsync = (firstName, lastName, number, email, city, state, password) => (dispatch) => {
   dispatch({
-    type: ConstantActionTypes.LOGIN_USER_START
+    type: ConstantActionTypes.CREATE_USER_START
   });
   const { REACT_APP_API } = process.env;
   fetch(`${REACT_APP_API}/auth/create-user`, {
