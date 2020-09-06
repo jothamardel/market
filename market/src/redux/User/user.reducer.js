@@ -8,14 +8,15 @@ const INITIAL_STATE = {
 }
 
 const userReducer = (state = INITIAL_STATE, action = {}) => {
-
   switch (action.type) {
-    case ConstantActionTypes.LOGIN_USER_START || ConstantActionTypes.CREATE_USER_START:
+    case ConstantActionTypes.LOGIN_USER_START,
+      ConstantActionTypes.CREATE_USER_START:
       return {
         ...state,
         isPending: true
       };
-    case ConstantActionTypes.LOGIN_USER_SUCCESS || ConstantActionTypes.CREATE_USER_SUCCESS:
+    case ConstantActionTypes.LOGIN_USER_SUCCESS,
+      ConstantActionTypes.CREATE_USER_SUCCESS:
       return {
         ...state,
         isPending: false,
@@ -28,7 +29,8 @@ const userReducer = (state = INITIAL_STATE, action = {}) => {
         errorStatus: null,
         currentUser: action.payload
       }
-    case ConstantActionTypes.LOGIN_USER_FAILED || ConstantActionTypes.CREATE_USER_FAILED:
+    case ConstantActionTypes.LOGIN_USER_FAILED,
+      ConstantActionTypes.CREATE_USER_FAILED:
       return {
         ...state,
         isPending: false,
