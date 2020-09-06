@@ -33,6 +33,7 @@ class Registration extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <>
         <div className='kasuwa-reg'>
@@ -56,10 +57,16 @@ class Registration extends React.Component {
             <Input required name="city" type='text' onChange={this.onInputChange} placeholder='City' />
             <Input required name="state" type='text' onChange={this.onInputChange} placeholder='State' />
             <Input required name="password" type='password' onChange={this.onInputChange} placeholder='password' />
-            <Button type="submit">Register</Button>
-            <Link to='/'>
-              <Button>Back</Button>
-            </Link>
+            {
+              this.props.user.isPending ?
+                <Button outlined loading={"true"}>Login</Button> :
+                <>
+                  <Button type="submit">Register</Button>
+                  <Link to='/'>
+                    <Button>Back</Button>
+                  </Link>
+                </>
+            }
             <div>
               <Link to='/login'>
                 Alredy have an account? Login here.
